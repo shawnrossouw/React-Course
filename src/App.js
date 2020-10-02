@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Person from "./Person/Person";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    persons: [
+      { name: "Shawn", age: 40 },
+      { name: "Melanje", age: 22 },
+      { name: "MJ", age: 32 },
+    ],
+  };
+  nameToggler = () => {
+    this.setState({
+      persons: [
+        { name: "Shawn Rossouw", age: 40 },
+        { name: "Melanje Kall", age: 22 },
+        { name: "MJ Otto", age: 32 },
+      ],
+    });
+  };
+  render() {
+    return (
+      <div className="App">
+        <h1>This is a REACT app from the react udemy course</h1>
+        <button onClick={this.nameToggler}>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>
+          Hobbies : Reading
+        </Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+      </div>
+    );
+  }
 }
 
 export default App;
